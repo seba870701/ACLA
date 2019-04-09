@@ -18,7 +18,8 @@ namespace ACLA
 
             do
             {
-                string url = jiraUrl + $@"/rest/api/latest/search?jql=Type%20%3D%20{issueType}%20and%20%22Epic%20Link%22%3D{issueKey}&startAt={startingIndex}";
+                //string url = jiraUrl + $@"/rest/api/latest/search?jql=Type%20%3D%20{issueType}%20and%20%22Epic%20Link%22%3D{issueKey}&startAt={startingIndex}";
+                string url = jiraUrl + $@"/rest/api/latest/search?jql=%22Epic%20Link%22%3D{issueKey}&startAt={startingIndex}";
 
                 string serverResponse = JiraWebRequest(url, login, password);
 

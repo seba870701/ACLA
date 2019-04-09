@@ -10,10 +10,9 @@ namespace ACLA
 {
     public class DataAnalysisAndPresentation
     {
-        
-        public static System.Data.DataTable GetTableForSummaryGrid(List<StorySummary> stories)
+        public static System.Data.DataTable GetTableForSummaryGrid(List<StorySummary> stories, string epic)
         {
-            List<Tuple<string, string>> storiesInEpic = GetStorySummaryEpicLevel(stories);
+            List<Tuple<string, string>> storiesInEpic = GetStorySummaryEpicLevel(stories, epic);
 
             System.Data.DataTable output = new System.Data.DataTable();
             output.Columns.Add("Description", typeof(string));
@@ -47,7 +46,7 @@ namespace ACLA
             
             return output;
         }
-        private static List<Tuple<string, string>> GetStorySummaryEpicLevel(List<StorySummary> stories)
+        private static List<Tuple<string, string>> GetStorySummaryEpicLevel(List<StorySummary> stories, string epic)
         {
             List<Tuple<string, string>> outputData = new List<Tuple<string, string>>();
             int noStories, noClosedStories = 0, noOpenStories = 0, noAnalysis = 0, noResolvedStories = 0, noReadyToDevelop = 0, noDevelopment = 0, noReadyToTest = 0, noTesting = 0;
@@ -77,7 +76,7 @@ namespace ACLA
                 }
             }
 
-            outputData.Add(Tuple.Create("USER STORIES", ""));
+            outputData.Add(Tuple.Create("ISSUES IN EPIC", ""));
             outputData.Add(Tuple.Create("Number of all stories in epic", noStories.ToString()));
             outputData.Add(Tuple.Create("Number of open stories in epic", noOpenStories.ToString()));
             outputData.Add(Tuple.Create("Number of stories in analysis in epic", noAnalysis.ToString()));

@@ -56,7 +56,7 @@ namespace ACLA
         private void DoWork()
         {
             var stories = ApiRequests.GetStoryListFromEpic(txtBoxJiraUrl.Text, txtBoxJiraLogin.Text, txtBoxJiraPassword.Text, txtBoxJiraEpicKey.Text);
-            var summaryTable = DataAnalysisAndPresentation.GetTableForSummaryGrid(stories);
+            var summaryTable = DataAnalysisAndPresentation.GetTableForSummaryGrid(stories, txtBoxJiraEpicKey.Text);
             var emailTable = DataAnalysisAndPresentation.GetEmailMatrix(stories, txtBoxSignature.Text);
 
             UiGridFormatting.FormatGrid(dgvSummary, summaryTable);
